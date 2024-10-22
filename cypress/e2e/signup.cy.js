@@ -1,26 +1,28 @@
-describe('Test sign-up with mocked reCAPTCHA', () => {
-    it('should fill out the form and mock the reCAPTCHA', () => {
-        // Visit the sign-up page
-        cy.visit('https://app.quickconnect.biz/sign-up');
+import SignupPage from '../support/Signup';
 
-        // Enter email or mobile number
-        cy.xpath('//*[@id="signup-page"]/section/div/div/div[1]/div[2]/form/div[1]/div[1]/div[2]/input')
-          .type('testuser22@example.com');
+describe('Signup Page Test with reCAPTCHA Bypass', () => {
+  const signupPage = new SignupPage();
+  const siteKey = '6LfAtWgqAAAAADXKQPZANEzBhK_bcI5h0UM-Qjd2';  // Your reCAPTCHA site key
+  const signupUrl = 'https://app.quickconnect.biz/sign-up';     // Signup URL
+  const email = 'testuser1@example.com';
+  const password = 'Password123!';
 
-        // Enter password
-        cy.xpath('//*[@id="signup-page"]/section/div/div/div[1]/div[2]/form/div[1]/div[2]/div[2]/input')
-          .type('password123');
+  beforeEach(() => {
+    cy.visit(signupUrl);
+  });
 
-        // Mock the reCAPTCHA validation request
-        
-        cy.intercept('POST', '/captcha/verify', { success: true }).as('captchaVerify');
+  it('Should fill the signup form, bypass reCAPTCHA, and submit', () => {
+    // Input email and password
+    signupPage.typeEmail(email);
+    signupPage.typePassword(password);
 
-        // Wait for the button to be visible and click with force option
-        
-        cy.xpath("//button[normalize-space()='Create Account']")
-          .should('be.visible') // Wait until the button is visible
-          .click({ force: true });
-        
-    
-    });
+    // Bypass reCAPTCHA
+    signupPage.bypassRecaptcha(siteKey, signupUrl);
+
+    // Click on the signup button
+    signupPage.clickSignupButton();
+
+    // Verify the expected result after signup
+     // Adjust this to match the expected URL
+  });
 });

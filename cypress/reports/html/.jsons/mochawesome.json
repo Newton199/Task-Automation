@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-10-22T12:42:18.191Z",
+    "end": "2024-10-22T12:42:18.815Z",
+    "duration": 624,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7dbe8365-0a5d-44fb-851d-2256a9bb159b",
+      "title": "",
+      "fullFile": "cypress/e2e/forgot.cy.js",
+      "file": "cypress/e2e/forgot.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "58a0b49c-f970-4b2f-8773-68a5d0b42f4e",
+          "title": "Forgot Password Flow with OTP",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully reset password using OTP",
+              "fullTitle": "Forgot Password Flow with OTP should successfully reset password using OTP",
+              "timedOut": null,
+              "duration": 523,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Step 1: Visit Forgot Password Page\n_forgotPasswordPage.forgotPasswordPage.visit();\n// Step 2: Enter Email in the Input Field\n_forgotPasswordPage.forgotPasswordPage.enterEmail(testEmail);\n// Step 3: Submit the Email\n_forgotPasswordPage.forgotPasswordPage.submitEmail();\n// Step 4: Wait for the OTP to be received\ncy.wait(5000); // Adjust wait time as needed\n// Step 5: Retrieve the OTP from Mailosaur\nconst client = new mailosaur.MailosaurClient(apiKey);\nclient.messages.get(serverId, {\n  sentTo: testEmail\n}).then(email => {\n  // Extract the OTP from the email (adjust based on email content)\n  const otp = email.text.codes[0]; // Assuming OTP is in the 'codes' part, modify as needed\n  // Step 6: Enter the OTP into the OTP field\n  _otpPage.otpPage.enterOtp(otp);\n  // Step 7: Submit the OTP\n  _otpPage.otpPage.submitOtp();\n});",
+              "err": {
+                "message": "TypeError: mailosaur.MailosaurClient is not a constructor",
+                "estack": "TypeError: mailosaur.MailosaurClient is not a constructor\n    at Context.eval (webpack://automation/./cypress/e2e/forgot.cy.js:28:19)",
+                "diff": null
+              },
+              "uuid": "44ac7043-e9d7-4cbd-a94d-d7d4bae34ee9",
+              "parentUUID": "58a0b49c-f970-4b2f-8773-68a5d0b42f4e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "44ac7043-e9d7-4cbd-a94d-d7d4bae34ee9"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 523,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
