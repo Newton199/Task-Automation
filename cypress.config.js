@@ -2,10 +2,6 @@ const axios = require('axios');
 
 module.exports = {
   reporter: 'cypress-mochawesome-reporter',
-  
-  
-  
-  
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
@@ -13,9 +9,11 @@ module.exports = {
       // Define the task to solve reCAPTCHA using 2Captcha
       on('task', {
         solveRecaptcha({ siteKey, pageUrl, apiKey }) {
+          console.log('solveRecaptcha task called with:', { siteKey, pageUrl, apiKey });
           return axios.get(`http://2captcha.com/in.php?key=${apiKey}&method=userrecaptcha&googlekey=${siteKey}&pageurl=${pageUrl}&json=1`)
             .then(response => {
               const taskId = response.data.request;
+              console.log('2Captcha task ID:', taskId);
 
               return new Promise((resolve, reject) => {
                 const interval = setInterval(() => {
@@ -23,6 +21,7 @@ module.exports = {
                     .then(result => {
                       if (result.data.status === 1) {
                         clearInterval(interval);
+                        console.log('CAPTCHA solved:', result.data.request);
                         resolve(result.data.request);
                       } else if (result.data.status === 0) {
                         console.log('Waiting for CAPTCHA solution...');

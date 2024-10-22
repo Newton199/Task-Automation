@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2024-10-22T12:42:18.191Z",
-    "end": "2024-10-22T12:42:18.815Z",
-    "duration": 624,
+    "start": "2024-10-22T12:52:37.777Z",
+    "end": "2024-10-22T12:52:38.323Z",
+    "duration": 546,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "7dbe8365-0a5d-44fb-851d-2256a9bb159b",
+      "uuid": "56ba6cf7-7971-45f4-a29c-374ba08608c2",
       "title": "",
       "fullFile": "cypress/e2e/forgot.cy.js",
       "file": "cypress/e2e/forgot.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "58a0b49c-f970-4b2f-8773-68a5d0b42f4e",
+          "uuid": "fad025a7-076b-4b3a-8bb0-c32cbf938ac1",
           "title": "Forgot Password Flow with OTP",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "should successfully reset password using OTP",
               "fullTitle": "Forgot Password Flow with OTP should successfully reset password using OTP",
               "timedOut": null,
-              "duration": 523,
+              "duration": 413,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -51,8 +51,8 @@
                 "estack": "TypeError: mailosaur.MailosaurClient is not a constructor\n    at Context.eval (webpack://automation/./cypress/e2e/forgot.cy.js:28:19)",
                 "diff": null
               },
-              "uuid": "44ac7043-e9d7-4cbd-a94d-d7d4bae34ee9",
-              "parentUUID": "58a0b49c-f970-4b2f-8773-68a5d0b42f4e",
+              "uuid": "35d3e42f-cb2a-4dc7-b18d-3d36b3b31ef6",
+              "parentUUID": "fad025a7-076b-4b3a-8bb0-c32cbf938ac1",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "44ac7043-e9d7-4cbd-a94d-d7d4bae34ee9"
+            "35d3e42f-cb2a-4dc7-b18d-3d36b3b31ef6"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 523,
+          "duration": 413,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

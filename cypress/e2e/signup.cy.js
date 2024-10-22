@@ -23,6 +23,6 @@ describe('Signup Page Test with reCAPTCHA Bypass', () => {
     signupPage.clickSignupButton();
 
     // Verify the expected result after signup
-     // Adjust this to match the expected URL
+   // cy.url().should('include', '/some-url-after-signup'); // Adjust this to match the expected URL
   });
 });
